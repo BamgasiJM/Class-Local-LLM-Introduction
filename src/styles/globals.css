@@ -1,0 +1,112 @@
+/* =========================================================
+   Neumorphism (Soft UI) 디자인 토큰 - Cool Grey 팔레트
+   모든 시각 효과는 '색'이 아니라 '그림자(빛/어둠)'로 표현된다.
+   ========================================================= */
+:root {
+  /* 색상 */
+  --bg: #E0E5EC;          /* 베이스 'cool clay' 표면 */
+  --fg: #3D4852;          /* 본문 텍스트 (대비 7.5:1) */
+  --muted: #6B7280;       /* 보조 텍스트 (WCAG AA 4.6:1) */
+  --accent: #6C63FF;      /* 소프트 바이올렛 (CTA/포커스) */
+  --accent-light: #8B84FF;
+  --accent-2: #38B2AC;    /* 성공/긍정 (teal) */
+
+  /* 그림자 색 (RGBA로 부드럽게 블렌딩) */
+  --sh-dark: rgba(163, 177, 198, 0.6);
+  --sh-dark-strong: rgba(163, 177, 198, 0.7);
+  --sh-light: rgba(255, 255, 255, 0.5);
+  --sh-light-strong: rgba(255, 255, 255, 0.6);
+
+  /* 반경 */
+  --r-card: 32px;
+  --r-base: 16px;
+  --r-inner: 12px;
+
+  /* 그림자 프리셋 */
+  --extruded: 9px 9px 16px var(--sh-dark), -9px -9px 16px var(--sh-light);
+  --extruded-hover: 12px 12px 20px var(--sh-dark-strong), -12px -12px 20px var(--sh-light-strong);
+  --extruded-sm: 5px 5px 10px var(--sh-dark), -5px -5px 10px var(--sh-light);
+  --inset: inset 6px 6px 10px var(--sh-dark), inset -6px -6px 10px var(--sh-light);
+  --inset-deep: inset 10px 10px 20px var(--sh-dark-strong), inset -10px -10px 20px var(--sh-light-strong);
+  --inset-sm: inset 3px 3px 6px var(--sh-dark), inset -3px -3px 6px var(--sh-light);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.02em; }
+
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--accent); color: #fff; }
+
+/* ----- 공통 뉴모피즘 유틸 ----- */
+.nm-card {
+  background: var(--bg);
+  border-radius: var(--r-card);
+  box-shadow: var(--extruded);
+  transition: transform .3s ease-out, box-shadow .3s ease-out;
+}
+.nm-card.hoverable:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--extruded-hover);
+}
+.nm-inset { box-shadow: var(--inset); border-radius: var(--r-base); }
+.nm-inset-deep { box-shadow: var(--inset-deep); border-radius: var(--r-base); }
+
+/* 아이콘 웰: 카드에 '뚫린' 듯한 깊은 inset */
+.icon-well {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 64px; height: 64px; border-radius: var(--r-base);
+  background: var(--bg); box-shadow: var(--inset-deep);
+  color: var(--accent); flex-shrink: 0;
+}
+.icon-well.teal { color: var(--accent-2); }
+
+/* 버튼 */
+.nm-btn {
+  display: inline-flex; align-items: center; gap: .55rem;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;
+  padding: .85rem 1.6rem; border: none; cursor: pointer;
+  background: var(--bg); color: var(--fg); border-radius: var(--r-base);
+  box-shadow: var(--extruded); transition: all .3s ease-out;
+}
+.nm-btn:hover { transform: translateY(-1px); box-shadow: var(--extruded-hover); }
+.nm-btn:active { transform: translateY(.5px); box-shadow: var(--inset-sm); }
+.nm-btn.primary { background: var(--accent); color: #fff;
+  box-shadow: 6px 6px 14px rgba(108,99,255,.35), -6px -6px 14px rgba(255,255,255,.5); }
+.nm-btn:focus-visible { outline: none; box-shadow: var(--extruded), 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+
+/* 포커스 접근성 */
+a:focus-visible, button:focus-visible {
+  outline: none; box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+  border-radius: var(--r-inner);
+}
+
+/* 칩/뱃지 */
+.chip {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .8rem; font-weight: 600; color: var(--muted);
+  padding: .4rem .9rem; border-radius: 9999px;
+  background: var(--bg); box-shadow: var(--inset-sm);
+}
+.chip.accent { color: var(--accent); }
+
+/* 부드러운 floating 애니메이션 (장식용) */
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.floating { animation: float 3s ease-in-out infinite; }
+
+/* 스크롤 등장 애니메이션 */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease-out, transform .7s ease-out; }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .floating { animation: none; }
+  html { scroll-behavior: auto; }
+}
