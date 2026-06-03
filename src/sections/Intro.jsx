@@ -22,7 +22,7 @@ export default function Intro() {
           <FeatureCard icon={Wallet} title="비용 없음" delay={160}>
             API 사용료·구독료가 없습니다. 전기료를 제외하면 무제한으로 질문할 수 있습니다.
           </FeatureCard>
-          <FeatureCard icon={Wrench} title="자유로운 커스터마이즈" teal delay={240}>
+          <FeatureCard icon={Wrench} title="나에게 딱 맞춤" teal delay={240}>
             모델 교체, 시스템 프롬프트 변경, 내 문서 연결(RAG), 미세조정까지 마음대로.
           </FeatureCard>
         </div>
