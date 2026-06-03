@@ -13,13 +13,14 @@ export default function Conclusion() {
     { q: '이미지 생성도 같은 PC에서 되나요?', a: '네. ComfyUI로 Stable Diffusion·Flux 모델을 RTX 3060 12GB에서 구동할 수 있습니다. 원리는 LLM과 동일합니다.' },
   ]
   const refs = [
-    ['Ollama 공식', 'https://ollama.com'],
-    ['Open WebUI 문서', 'https://docs.openwebui.com'],
-    ['Hugging Face Models', 'https://huggingface.co/models'],
-    ['ComfyUI (GitHub)', 'https://github.com/comfyanonymous/ComfyUI'],
-    ['Stability AI', 'https://stability.ai'],
-    ['Black Forest Labs (Flux)', 'https://blackforestlabs.ai'],
-  ]
+    ["Ollama 공식", "https://ollama.com"],
+    ["Open WebUI 문서", "https://docs.openwebui.com"],
+    ["Hugging Face Models", "https://huggingface.co/models"],
+    ["ComfyUI (GitHub)", "https://github.com/comfyanonymous/ComfyUI"],
+    ["ComfyUI 웹에서 구동", "https://nordy.ai/comfyui/"],
+    ["Stability AI", "https://stability.ai"],
+    ["Black Forest Labs (Flux)", "https://blackforestlabs.ai"],
+  ];
   return (
     <>
       <section id="faq">
@@ -47,7 +48,7 @@ export default function Conclusion() {
             </div>
           </div>
           <p className="muted center mt2" style={{ display: 'flex', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
-            <Cpu size={16} /> 대학 강의 자료 · 로컬 LLM으로 만드는 나만의 AI 비서 · 기준 GPU: RTX 3060 12GB
+            <Cpu size={16} /> BamgasiJM | Semyung Univ.
           </p>
         </div>
       </footer>

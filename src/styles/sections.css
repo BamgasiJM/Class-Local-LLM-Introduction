@@ -5,8 +5,8 @@ section { padding: 6rem 0; }
 @media (max-width: 768px) { section { padding: 4rem 0; } }
 
 /* 섹션 헤더 */
-.sec-head { max-width: 760px; margin-bottom: 3rem; }
-.sec-kicker { font-size: .8rem; font-weight: 700; letter-spacing: .12em;
+.sec-head { max-width: none; margin-bottom: 3rem; }
+.sec-kicker { font-size: 1.0rem; font-weight: 700; letter-spacing: .12em;
   text-transform: uppercase; color: var(--accent); margin-bottom: .8rem; }
 .sec-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; }
 .sec-sub { margin-top: 1rem; color: var(--muted); font-size: 1.05rem; }
@@ -52,12 +52,12 @@ section { padding: 6rem 0; }
 .hero-visual { position: relative; display: flex; align-items: center; justify-content: center;
   min-height: 320px; }
 /* 동심원 장식 (extruded ↔ inset 교차) */
-.rings { position: relative; width: 300px; height: 300px; }
+.rings { position: relative; width: 360px; height: 360px; }
 .ring { position: absolute; border-radius: 50%; inset: 0; margin: auto; background: var(--bg); }
-.ring.r1 { width: 300px; height: 300px; box-shadow: var(--extruded); }
-.ring.r2 { width: 220px; height: 220px; box-shadow: var(--inset-deep); }
-.ring.r3 { width: 140px; height: 140px; box-shadow: var(--extruded); }
-.ring.r4 { width: 72px; height: 72px; box-shadow: var(--inset); display: flex; align-items: center;
+.ring.r1 { width: 360px; height: 360px; box-shadow: var(--extruded); }
+.ring.r2 { width: 264px; height: 264px; box-shadow: var(--inset-deep); }
+.ring.r3 { width: 168px; height: 168px; box-shadow: var(--extruded); }
+.ring.r4 { width: 86px; height: 86px; box-shadow: var(--inset); display: flex; align-items: center;
   justify-content: center; color: var(--accent); }
 
 /* ===== Timeline ===== */

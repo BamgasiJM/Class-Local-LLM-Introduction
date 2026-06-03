@@ -7,7 +7,7 @@ export default function Hero() {
       <div className="container hero-grid">
         <div>
           <span className="chip accent">
-            <Sparkles size={15} /> 대학 강의 자료 · 로컬 AI
+            <Sparkles size={15} /> BamgasiJM 강의 자료
           </span>
           <h1 className="mt1">
             내 컴퓨터에서

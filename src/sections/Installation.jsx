@@ -2,7 +2,13 @@ import { useState } from "react";
 import SectionHeader from "../components/SectionHeader.jsx";
 import InstallationSteps from "../components/InstallationSteps.jsx";
 import Callout from "../components/Callout.jsx";
-import { Rocket, Container, TerminalSquare } from "lucide-react";
+import {
+  Rocket,
+  Container,
+  TerminalSquare,
+  FolderTree,
+  HardDrive,
+} from "lucide-react";
 
 // Ollama + Open WebUI 설치 — 두 가지 방식(Docker / pip·venv)을 토글로 제공.
 export default function Installation() {
@@ -50,9 +56,14 @@ export default function Installation() {
       code: "# 버전 확인 (3.11.x 여야 함)\npython3.11 --version",
     },
     {
+      title: "작업 폴더 만들기",
+      desc: "Open WebUI를 설치하고 가상환경을 둘 전용 폴더를 만듭니다. 경로를 한곳으로 정해두면 venv 위치가 헷갈리지 않습니다. 아래 예시는 C 드라이브 루트에 openwebui 폴더를 만드는 방법입니다.",
+      code: "# Windows (명령 프롬프트 / PowerShell)\nmkdir C:\\openwebui\ncd C:\\openwebui\n\n# macOS / Linux\nmkdir ~/openwebui\ncd ~/openwebui",
+    },
+    {
       title: "가상환경(.venv) 생성 & 활성화",
-      desc: "시스템 파이썬과 충돌하지 않도록 프로젝트 폴더에 격리된 가상환경을 만듭니다.",
-      code: "# 가상환경 생성\npython3.11 -m venv .venv\n\n# 활성화 (macOS / Linux)\nsource .venv/bin/activate\n\n# 활성화 (Windows PowerShell)\n.venv\\Scripts\\Activate.ps1",
+      desc: "방금 만든 폴더 안에서 격리된 가상환경을 만듭니다. 앞으로 모든 명령은 이 폴더 안에서, 가상환경이 활성화된 상태로 실행합니다.",
+      code: "# 가상환경 생성 (C:\\openwebui 안에 .venv 폴더 생성)\npython3.11 -m venv .venv\n\n# 활성화 (Windows PowerShell)\n.venv\\Scripts\\Activate.ps1\n\n# 활성화 (macOS / Linux)\nsource .venv/bin/activate",
     },
     {
       title: "Open WebUI 설치",
@@ -142,6 +153,25 @@ export default function Installation() {
         <div key={method}>
           <InstallationSteps steps={steps} />
         </div>
+
+        {/* pip 방식일 때만: 모델 저장 위치 안내 */}
+        {method === "pip" && (
+          <div className="mt1">
+            <Callout icon={HardDrive} title="모델은 어디에 저장되나요?">
+              <code>pip install open-webui</code> 로 받은 것은 'Open WebUI
+              프로그램'일 뿐, 실제 LLM 모델은
+              <strong> Ollama가 따로 관리</strong>합니다.{" "}
+              <code>ollama pull</code> 로 받은 모델은 작업 폴더 (C:\openwebui)가
+              아니라 Ollama 기본 경로에 저장됩니다 — Windows{" "}
+              <code>C:\Users\사용자\.ollama\models</code>, macOS{" "}
+              <code>~/.ollama/models</code>, Linux{" "}
+              <code>/usr/share/ollama/.ollama/models</code>. 모델은 수 GB로 크기
+              때문에, 용량이 부족하면 <code>OLLAMA_MODELS</code> 환경변수를 다른
+              드라이브(예: D:\ollama-models)로 지정해 저장 위치를 바꿀 수
+              있습니다.
+            </Callout>
+          </div>
+        )}
 
         <div className="mt1">
           <Callout icon={Rocket} title="대화 시작" teal>

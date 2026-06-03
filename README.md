@@ -224,5 +224,4 @@ local-llm-course/
 * [ComfyUI](https://github.com/comfyanonymous/ComfyUI) · [Stability AI](https://stability.ai) · [Black Forest Labs (Flux)](https://blackforestlabs.ai)
 
 ***
-
-*대학 강의 자료 · 로컬 LLM으로 만드는 나만의 AI 비서 · 기준 GPU: RTX 3060 12GB*
+*세명대학교 강의 자료 · by BamgasiJM*

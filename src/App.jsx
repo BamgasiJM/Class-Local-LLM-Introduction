@@ -34,7 +34,7 @@ export default function App() {
         <div className="nav-inner">
           <a className="nav-brand" href="#top">
             <span className="icon-well"><Cpu size={22} /></span>
-            로컬 LLM 강의
+            로컬 AI 구축하기
           </a>
           <div className={`nav-links ${open ? 'open' : ''}`} onClick={() => setOpen(false)}>
             {links.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}
